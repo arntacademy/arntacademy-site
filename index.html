@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARNT Academy — Развиваем мышление через язык</title>
+  <meta name="description" content="Академия английского языка ARNT Academy: подготовка к экзаменам, разговорная практика, асинхронное обучение и консультации для преподавателей.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green:  #1A2E22;
+      --brown:  #251802;
+      --cream:  #F2EBD6;
+      --white:  #FDFDFD;
+      --cream15: rgba(242,235,214,0.15);
+      --brown12: rgba(37,24,2,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif; font-weight: 300;
+      background: var(--brown); color: var(--brown);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 30px 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: transparent;
+      transition: background 0.45s ease, padding 0.3s ease;
+    }
+    .nav.solid { background: var(--green); padding: 18px 64px; }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 400; font-size: 22px;
+      color: var(--white); text-decoration: none; letter-spacing: 0.01em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-crest { height: 30px; width: auto; filter: brightness(0) invert(1); opacity: 0.88; flex-shrink: 0; }
+    .nav-btn {
+      font-family: 'Jost', sans-serif; font-weight: 400; font-size: 11px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); background: var(--cream);
+      padding: 11px 26px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--white); }
+
+    .btn-solid {
+      font-family: 'Jost', sans-serif; font-weight: 400;
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); background: var(--cream);
+      padding: 16px 40px; text-decoration: none; transition: background 0.2s; display: inline-block;
+    }
+    .btn-solid:hover { background: var(--white); }
+    .btn-ghost {
+      font-family: 'Jost', sans-serif; font-weight: 400;
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--white); background: transparent;
+      border: 1px solid rgba(253,253,253,0.35);
+      padding: 16px 40px; text-decoration: none; transition: border-color 0.2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--white); }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      position: relative; height: 100vh; min-height: 620px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .hero-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.52) 100%);
+    }
+    .hero-deco {
+      position: absolute; bottom: -60px; right: -10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(320px, 38vw, 560px);
+      line-height: 1; color: var(--cream); opacity: 0.055;
+      user-select: none; pointer-events: none;
+    }
+    .hero-body {
+      position: relative; z-index: 2;
+      text-align: center; max-width: 1200px; padding: 0 24px;
+    }
+    .hero-label {
+      display: block; font-family: 'Jost', sans-serif; font-weight: 400;
+      font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--cream); opacity: 0.75; margin-bottom: 22px;
+    }
+    .hero-lockup {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; margin-bottom: 26px;
+    }
+    .hero-mark { height: clamp(140px, 20vw, 260px); width: auto; flex-shrink: 0; }
+    .hero-lockup-text {
+      display: flex; flex-direction: column; text-align: left;
+    }
+    .lockup-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic;
+      font-size: clamp(64px, 10vw, 130px);
+      line-height: 1; color: var(--white); letter-spacing: 0.01em;
+    }
+    .lockup-sub {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
+      font-size: clamp(20px, 3vw, 36px);
+      line-height: 1.2; color: var(--white); opacity: 0.8; margin-top: 8px;
+    }
+    .hero-cta { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 44px; }
+    /* ─── REQUEST BLOCK ──────────────────────────────────── */
+    .request { background: var(--cream); padding: 120px 0; }
+    .hub-label {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic;
+      font-size: clamp(24px, 3.2vw, 34px); letter-spacing: 0.01em; text-transform: none;
+      color: var(--brown); opacity: 0.85; margin-bottom: 36px; text-align: center; display: block;
+    }
+    .hub-menu { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .hub-item a {
+      display: flex; align-items: flex-start; gap: 24px;
+      background: var(--white);
+      border: 1px solid var(--brown12);
+      border-radius: 4px;
+      padding: 32px 36px;
+      text-decoration: none; color: var(--brown);
+      transition: border-color 0.2s;
+    }
+    .hub-item a:hover { border-color: var(--brown); }
+    .hub-key { width: 44px; height: auto; opacity: 0.9; flex-shrink: 0; margin-top: 2px; }
+    .hub-item-text { flex: 1; min-width: 0; }
+    .hub-item-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .hub-item-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      font-size: clamp(19px, 2.4vw, 25px); line-height: 1.25;
+    }
+    .hub-item-desc {
+      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 14px;
+      line-height: 1.6; color: var(--brown); opacity: 0.6; margin-top: 8px;
+    }
+    .hub-arrow { font-family: 'Jost', sans-serif; font-size: 15px; opacity: 0.5; flex-shrink: 0; margin-top: 5px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--brown); padding: 30px 64px;
+      border-top: 1px solid var(--cream15);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .f-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 400; font-size: 20px;
+      color: var(--cream); opacity: 0.4; text-decoration: none;
+    }
+    .f-copy {
+      font-family: 'Jost', sans-serif; font-weight: 300;
+      font-size: 11px; letter-spacing: 0.06em;
+      color: var(--cream); opacity: 0.25;
+    }
+
+    @media (max-width: 600px) {
+      .nav { padding: 22px 24px; }
+      .nav.solid { padding: 16px 24px; }
+      .hero-lockup { flex-direction: column; justify-content: center; gap: 14px; }
+      .hero-lockup-text { text-align: center; }
+      .hero-cta { flex-direction: column; width: 100%; }
+      .hero-cta .btn-solid, .hero-cta .btn-ghost { width: 100%; text-align: center; }
+      .request { padding: 80px 0; }
+      .hub-item a { padding: 24px 20px; gap: 16px; }
+      .hub-key { width: 36px; }
+      footer { flex-direction: column; gap: 14px; text-align: center; padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="index.html">
+      <img class="nav-crest" src="Frame 24.png" alt="">
+      ARNT Academy
+    </a>
+    <a class="nav-btn" href="https://t.me/arnt_academy_clients_bot" target="_blank" rel="noopener">Записаться на урок</a>
+  </nav>
+
+  <section class="hero">
+    <img class="hero-photo" src="библио.png" alt="" aria-hidden="true" />
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="hero-deco" aria-hidden="true">A</div>
+
+    <div class="hero-body">
+      <span class="hero-label">Академия английского языка</span>
+      <div class="hero-lockup">
+        <img class="hero-mark" src="AA.png" alt="ARNT Academy">
+        <span class="hero-lockup-text">
+          <span class="lockup-title">Arnt Academy:</span>
+          <span class="lockup-sub">развивай мышление через язык</span>
+        </span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn-solid" href="#request">Записаться</a>
+        <a class="btn-ghost" href="#request">Об академии</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="request" id="request">
+    <div class="wrap">
+      <span class="hub-label">Какой у вас запрос?</span>
+      <ul class="hub-menu">
+        <li class="hub-item">
+          <a href="exam-prep.html">
+            <img class="hub-key" src="ключ.png" alt="" aria-hidden="true">
+            <span class="hub-item-text">
+              <span class="hub-item-top">
+                <span class="hub-item-title">Хочу сдать ОГЭ, ЕГЭ, TOEFL, DET</span>
+                <span class="hub-arrow">&#8594;</span>
+              </span>
+              <p class="hub-item-desc">Средний балл ЕГЭ — 90, средняя оценка за ОГЭ — 5.</p>
+            </span>
+          </a>
+        </li>
+        <li class="hub-item">
+          <a href="conversational.html">
+            <img class="hub-key" src="ключ.png" alt="" aria-hidden="true">
+            <span class="hub-item-text">
+              <span class="hub-item-top">
+                <span class="hub-item-title">Хочу свободно разговаривать на английском</span>
+                <span class="hub-arrow">&#8594;</span>
+              </span>
+              <p class="hub-item-desc">Разработаем программу изучения под вашу цель.</p>
+            </span>
+          </a>
+        </li>
+        <li class="hub-item">
+          <a href="async.html">
+            <img class="hub-key" src="ключ.png" alt="" aria-hidden="true">
+            <span class="hub-item-text">
+              <span class="hub-item-top">
+                <span class="hub-item-title">Асинхронное обучение</span>
+                <span class="hub-arrow">&#8594;</span>
+              </span>
+              <p class="hub-item-desc">Каждую неделю — пошаговый план изучения языка и подробная обратная связь.</p>
+            </span>
+          </a>
+        </li>
+        <li class="hub-item">
+          <a href="teacher-consultation.html">
+            <img class="hub-key" src="ключ.png" alt="" aria-hidden="true">
+            <span class="hub-item-text">
+              <span class="hub-item-top">
+                <span class="hub-item-title">Консультация для преподавателей</span>
+                <span class="hub-arrow">&#8594;</span>
+              </span>
+              <p class="hub-item-desc">3 созвона: оптимизируем операционку, внедрим новые инструменты и усовершенствуем методику.</p>
+            </span>
+          </a>
+        </li>
+        <li class="hub-item">
+          <a href="https://arntacademy.github.io/arntacademy/#test" target="_blank" rel="noopener">
+            <img class="hub-key" src="ключ.png" alt="" aria-hidden="true">
+            <span class="hub-item-text">
+              <span class="hub-item-top">
+                <span class="hub-item-title">Узнать свой уровень английского</span>
+                <span class="hub-arrow">&#8594;</span>
+              </span>
+              <p class="hub-item-desc">А ещё получите ссылку на закрытый клуб для изучения английского.</p>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <a class="f-logo" href="index.html">ARNT Academy</a>
+    <span class="f-copy">© 2025 ARNT Academy</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 72);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

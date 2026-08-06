@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сдать ОГЭ, ЕГЭ, TOEFL, DET — ARNT Academy</title>
+  <meta name="description" content="Подготовка к ОГЭ, ЕГЭ, TOEFL и DET в ARNT Academy: группа или индивидуально, структурированная программа, реальные результаты.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green:  #1A2E22;
+      --brown:  #251802;
+      --cream:  #F2EBD6;
+      --white:  #FDFDFD;
+      --cream15: rgba(242,235,214,0.15);
+      --brown12: rgba(37,24,2,0.12);
+      --brown20: rgba(37,24,2,0.20);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif; font-weight: 300;
+      background: var(--cream); color: var(--brown);
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 64px; }
+
+    /* nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: transparent; padding: 30px 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.45s ease, padding 0.3s ease;
+    }
+    .nav.solid { background: var(--green); padding: 18px 64px; }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 24px;
+      color: var(--white); text-decoration: none; letter-spacing: 0.01em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-crest { height: 34px; width: auto; filter: brightness(0) invert(1); opacity: 0.88; flex-shrink: 0; }
+    .nav-btn {
+      font-family: 'Jost', sans-serif; font-weight: 400; font-size: 11px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); background: var(--cream);
+      padding: 11px 26px; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--white); }
+
+    /* shared text */
+    .lbl {
+      font-family: 'Jost', sans-serif; font-weight: 400;
+      font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+      opacity: 0.42; display: block; margin-bottom: 20px;
+    }
+    .lbl-light { color: var(--cream); }
+    .lbl-dark  { color: var(--brown); }
+    .sh {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      font-size: clamp(36px, 4vw, 56px); line-height: 1.08;
+    }
+    .sh-light { color: var(--white); }
+    .sh-dark  { color: var(--brown); }
+    .sh em { font-style: italic; }
+    .btn-solid {
+      font-family: 'Jost', sans-serif; font-weight: 400;
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); background: var(--cream);
+      padding: 16px 40px; text-decoration: none; transition: background 0.2s; display: inline-block;
+    }
+    .btn-solid:hover { background: var(--white); }
+    .btn-ghost {
+      font-family: 'Jost', sans-serif; font-weight: 400;
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--white); background: transparent;
+      border: 1px solid rgba(253,253,253,0.35);
+      padding: 16px 40px; text-decoration: none; transition: border-color 0.2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--white); }
+
+    /* hero */
+    .hero { position: relative; height: 100vh; min-height: 620px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .hero-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.52) 100%); }
+    .hero-deco {
+      position: absolute; bottom: -60px; right: -10px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(320px, 38vw, 560px); line-height: 1; color: var(--cream); opacity: 0.055;
+      user-select: none; pointer-events: none;
+    }
+    .hero-body { position: relative; z-index: 2; text-align: center; max-width: 1200px; padding: 0 24px; }
+    .hero-label {
+      display: block; font-family: 'Jost', sans-serif; font-weight: 400;
+      font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--cream); opacity: 0.75; margin-bottom: 22px;
+    }
+    .hero-lockup { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+    .hero-mark { height: clamp(140px, 20vw, 260px); width: auto; flex-shrink: 0; }
+    .hero-lockup-text { display: flex; flex-direction: column; text-align: left; }
+    .lockup-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic;
+      font-size: clamp(64px, 10vw, 130px); line-height: 1; color: var(--white); letter-spacing: 0.01em;
+    }
+    .lockup-sub {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
+      font-size: clamp(20px, 3vw, 36px); line-height: 1.2; color: var(--white); opacity: 0.8; margin-top: 8px;
+    }
+    .hero-cta { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 44px; }
+
+    /* format picker (2 cards) */
+    .programs { background: var(--brown); padding: 100px 0; }
+    .programs-hd { margin-bottom: 56px; }
+    .programs-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--cream15); }
+    .p-card {
+      display: block; padding: 52px 44px 52px 0; border-right: 1px solid var(--cream15);
+      text-decoration: none; color: inherit; transition: opacity 0.25s ease;
+    }
+    .p-card:hover { opacity: 0.82; }
+    .p-card:not(:first-child) { padding-left: 44px; }
+    .p-card:last-child { border-right: none; padding-right: 0; }
+    .p-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .p-num {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: 80px; line-height: 1; color: var(--cream); opacity: 0.14;
+      margin-bottom: 28px; letter-spacing: -0.03em;
+    }
+    .p-key { width: 56px; height: auto; opacity: 0.92; pointer-events: none; }
+    .p-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 28px; line-height: 1.15; color: var(--white); margin-bottom: 6px; }
+    .p-fmt { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); opacity: 0.38; margin-bottom: 28px; }
+    .p-desc { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.8; color: var(--cream); opacity: 0.6; margin-bottom: 40px; }
+    .p-price { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 36px; line-height: 1; color: var(--cream); margin-bottom: 5px; }
+    .p-price-note { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 12px; color: var(--cream); opacity: 0.38; letter-spacing: 0.04em; }
+    .p-more { display: block; margin-top: 28px; font-family: 'Jost', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); opacity: 0.55; }
+
+    /* about */
+    .about { background: var(--cream); padding: 120px 0; }
+    .about-grid { display: flex; flex-direction: column; align-items: center; gap: 56px; text-align: center; }
+    .about-photo { width: 260px; aspect-ratio: 3/4; overflow: hidden; border-radius: 2px; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+    .about-left { max-width: 680px; }
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(26px, 2.8vw, 38px); line-height: 1.5; color: var(--brown); margin-top: 24px;
+    }
+    .about-right { width: 100%; display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; }
+    .stat-row { border-left: 1px solid var(--brown12); padding: 0 48px; }
+    .stat-row:first-child { border-left: none; padding-left: 0; }
+    .stat-row:last-child { padding-right: 0; }
+    .stat-val { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 60px; line-height: 1; color: var(--brown); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .stat-val-sm { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 40px; line-height: 1; color: var(--brown); margin-bottom: 6px; }
+    .stat-note { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.55; color: var(--brown); opacity: 0.55; }
+
+    /* cabinet */
+    .cabinet { background: var(--white); padding: 120px 0; }
+    .cabinet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .cabinet-desc { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.85; color: var(--brown); opacity: 0.7; margin: 24px 0 36px; max-width: 460px; }
+    .cab-list { list-style: none; max-width: 460px; }
+    .cab-list li { position: relative; padding-left: 24px; margin-bottom: 14px; font-family: 'Jost', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.7; color: var(--brown); opacity: 0.75; }
+    .cab-list li::before { content: '—'; position: absolute; left: 0; opacity: 0.5; }
+    .cabinet-photo { aspect-ratio: 8/5; border-radius: 2px; overflow: hidden; box-shadow: 0 24px 60px rgba(37,24,2,0.16); }
+    .cabinet-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
+    /* benefits */
+    .benefits { background: var(--white); padding: 120px 0; }
+    .benefits-hd { margin-bottom: 72px; }
+    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .b-item { background: var(--cream); border-radius: 2px; padding: 48px 44px; border-top: 3px solid var(--green); position: relative; }
+    .b-num { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 52px; line-height: 1; color: var(--green); opacity: 0.18; margin-bottom: 20px; display: block; }
+    .b-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 24px; line-height: 1.25; color: var(--brown); margin-bottom: 14px; }
+    .b-text { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.8; color: var(--brown); opacity: 0.65; }
+
+    /* cta */
+    .cta { background: var(--green); padding: 140px 0; position: relative; overflow: hidden; }
+    .cta-deco {
+      position: absolute; bottom: -100px; right: -30px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(280px, 35vw, 500px); line-height: 1; color: var(--cream); opacity: 0.04;
+      user-select: none; pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 2; max-width: 680px; }
+    .cta-h { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(40px, 5.5vw, 76px); line-height: 1.07; color: var(--white); margin-bottom: 24px; }
+    .cta-h em { font-style: italic; color: var(--cream); }
+    .cta-p { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.8; color: var(--white); opacity: 0.6; margin-bottom: 52px; max-width: 420px; }
+    .cta-contacts { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 48px; }
+    .c-item { display: flex; flex-direction: column; gap: 5px; }
+    .c-lbl { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.38; }
+    .c-val { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 15px; color: var(--white); opacity: 0.82; text-decoration: none; transition: opacity 0.2s; }
+    .c-val:hover { opacity: 1; }
+
+    /* footer */
+    footer { background: var(--brown); padding: 30px 64px; display: flex; align-items: center; justify-content: space-between; }
+    .f-logo { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 20px; color: var(--cream); opacity: 0.4; text-decoration: none; }
+    .f-copy { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 11px; letter-spacing: 0.06em; color: var(--cream); opacity: 0.25; }
+
+    /* reviews */
+    .reviews { position: relative; padding: 120px 0; overflow: hidden; }
+    .reviews-bg { position: absolute; inset: 0; background-image: url('библио.png'); background-size: cover; background-position: center; background-repeat: no-repeat; }
+    .reviews-bg::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.78); }
+    .reviews-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 80px; text-align: center; }
+    .reviews-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 64px; letter-spacing: 0.04em; }
+    .slider { position: relative; }
+    .slide { display: none; flex-direction: column; align-items: center; gap: 36px; }
+    .slide.active { display: flex; }
+    .slide-avatar { width: 180px; height: 180px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255,255,255,0.25); flex-shrink: 0; }
+    .slide-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: grayscale(100%); }
+    .slide-avatar-init { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); }
+    .slide-avatar-init span { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: rgba(255,255,255,0.7); }
+    .slide-text { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.65; color: var(--white); font-style: normal; }
+    .slide-name { font-family: 'Jost', sans-serif; font-weight: 500; font-size: 16px; color: var(--white); letter-spacing: 0.08em; }
+    .slide-place { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.06em; }
+    .slider-arrow {
+      pointer-events: all; cursor: pointer; width: 48px; height: 48px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.1);
+      color: var(--white); font-size: 20px; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s; position: absolute; top: 50%; transform: translateY(-50%);
+    }
+    .slider-arrow:hover { background: rgba(255,255,255,0.2); }
+    .slider-arrow.prev { left: -64px; }
+    .slider-arrow.next { right: -64px; }
+
+    /* faq */
+    .faq { background: var(--cream); padding: 120px 0; }
+    .faq-hd { margin-bottom: 56px; }
+    .faq-list { border-top: 1px solid var(--brown20); }
+    .faq-item { border-bottom: 1px solid var(--brown20); }
+    .faq-btn { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 0; text-align: left; }
+    .faq-q { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2vw, 24px); font-weight: 400; color: var(--brown); line-height: 1.3; }
+    .faq-icon {
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--brown20);
+      display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 300; color: var(--green);
+      transition: transform 0.35s ease, background 0.2s, border-color 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--green); color: var(--cream); border-color: var(--green); }
+    .faq-a {
+      font-family: 'Jost', sans-serif; font-weight: 300; font-size: clamp(14px, 1.4vw, 16px); line-height: 1.85;
+      color: var(--brown); opacity: 0.7; max-height: 0; overflow: hidden; transition: max-height 0.45s ease, padding-bottom 0.35s;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 28px; }
+
+    @media (max-width: 960px) {
+      .wrap { padding: 0 32px; }
+      .nav { padding: 26px 32px; }
+      .nav.solid { padding: 16px 32px; }
+      .nav-btn { padding: 13px 24px; font-size: 10px; }
+      .hero-lockup { flex-direction: column; justify-content: center; gap: 14px; }
+      .hero-lockup-text { text-align: center; }
+      .about { padding: 88px 0; }
+      .about-photo { width: 200px; }
+      .about-right { gap: 32px; }
+      .stat-row { padding: 0 24px; }
+      .programs { padding: 72px 0; }
+      .programs-grid { grid-template-columns: 1fr; border-top: none; }
+      .p-card { border-right: none; border-top: 1px solid var(--cream15); padding: 44px 0 !important; }
+      .p-card:first-child { padding-top: 0 !important; border-top: none; }
+      .p-key { width: 44px; }
+      .cabinet { padding: 88px 0; }
+      .cabinet-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cabinet-photo { aspect-ratio: 16/10; }
+      .reviews { padding: 88px 0; }
+      .reviews-inner { padding: 0 56px; }
+      .reviews-title { margin-bottom: 48px; }
+      .slide-avatar { width: 140px; height: 140px; }
+      .slider-arrow { width: 40px; height: 40px; font-size: 16px; }
+      .slider-arrow.prev { left: 0; }
+      .slider-arrow.next { right: 0; }
+      .benefits { padding: 88px 0; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .b-item { padding: 36px 32px; }
+      .cta { padding: 100px 0; }
+      footer { flex-direction: column; gap: 14px; text-align: center; padding: 28px 32px; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 20px; }
+      .nav { padding: 22px 20px; }
+      .nav.solid { padding: 14px 20px; }
+      .nav-btn { padding: 12px 18px; font-size: 9px; }
+      .hero-cta { flex-direction: column; width: 100%; }
+      .hero-cta .btn-solid, .hero-cta .btn-ghost { width: 100%; text-align: center; }
+      .about { padding: 72px 0; }
+      .programs { padding: 64px 0; }
+      .benefits { padding: 72px 0; }
+      .cta { padding: 80px 0; }
+      .stat-val { font-size: 48px; }
+      .about-right { flex-direction: column; gap: 24px; }
+      .stat-row { border-left: none; padding: 0; }
+      .p-price { font-size: 30px; }
+      .reviews { padding: 64px 0; }
+      .reviews-inner { padding: 0 8px; }
+      .reviews-title { margin-bottom: 36px; }
+      .slide { gap: 22px; }
+      .slide-avatar { width: 110px; height: 110px; }
+      .slider-arrow { width: 34px; height: 34px; font-size: 14px; background: rgba(0,0,0,0.35); }
+      .slider-arrow.prev { left: -2px; }
+      .slider-arrow.next { right: -2px; }
+      .b-item { padding: 32px 0; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">
+      <img class="nav-crest" src="Frame 24.png" alt="">
+      ARNT Academy
+    </a>
+    <a class="nav-btn" href="https://t.me/arnt_academy_clients_bot" target="_blank" rel="noopener">Записаться</a>
+  </nav>
+
+  <section class="hero">
+    <img class="hero-photo" src="библио.png" alt="" aria-hidden="true">
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="hero-deco" aria-hidden="true">A</div>
+    <div class="hero-body">
+      <span class="hero-label">Академия английского языка</span>
+      <div class="hero-lockup">
+        <img class="hero-mark" src="AA.png" alt="ARNT Academy">
+        <span class="hero-lockup-text">
+          <span class="lockup-title">Arnt Academy:</span>
+          <span class="lockup-sub">хочу сдать ОГЭ, ЕГЭ, TOEFL, DET</span>
+        </span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn-solid" href="https://t.me/arnt_academy_clients_bot" target="_blank" rel="noopener">Записаться</a>
+        <a class="btn-ghost" href="#about">Об академии</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="препод.png" alt="Арина Ткачёва" />
+        </div>
+        <div class="about-left">
+          <span class="lbl lbl-dark">Кто я и почему готовиться со мной</span>
+          <p class="about-quote">
+            Меня зовут Арина. Училась английскому за рубежом, готовлю по собственной методике пересказов (совмещает академическую точность и живую практику). Мои студенты поступают в вузы и сдают экзамены на высокие баллы.
+          </p>
+        </div>
+        <div class="about-right">
+          <div class="stat-row">
+            <div class="stat-val">90</div>
+            <div class="stat-note">Средний балл ЕГЭ<br>12 стобалльников</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-val">5</div>
+            <div class="stat-note">Средняя оценка за ОГЭ</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-val-sm">B2–C1</div>
+            <div class="stat-note">Уровни международных экзаменов, к которым я готовлю</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="programs" id="formats">
+    <div class="wrap">
+      <div class="programs-hd">
+        <span class="lbl lbl-light">Форматы обучения</span>
+        <h2 class="sh sh-light">Выберите формат</h2>
+      </div>
+      <div class="programs-grid">
+
+        <a class="p-card" href="format-group.html">
+          <div class="p-top">
+            <div class="p-num">01</div>
+            <img class="p-key" src="ключ.png" alt="" aria-hidden="true">
+          </div>
+          <h3 class="p-name">В группе</h3>
+          <p class="p-fmt">5 человек</p>
+          <p class="p-desc">
+            Малая группа — академическая среда без потери индивидуального внимания. Структурированная программа, живая дискуссия, мотивирующая атмосфера. Плюс — доступ в закрытый Telegram-канал с материалами Арины.
+          </p>
+          <div class="p-price">12 000 ₽</div>
+          <div class="p-price-note">за 8 уроков</div>
+          <span class="p-more">Подробнее о формате &#8594;</span>
+        </a>
+
+        <a class="p-card" href="format-individual.html">
+          <div class="p-top">
+            <div class="p-num">02</div>
+            <img class="p-key" src="ключ.png" alt="" aria-hidden="true">
+          </div>
+          <h3 class="p-name">Индивидуально</h3>
+          <p class="p-fmt">Один на один</p>
+          <p class="p-desc">
+            Программа выстраивается полностью под ученика: темп, акценты, приоритеты. Максимальный результат за минимальное время. Плюс — доступ в закрытый Telegram-канал с материалами Арины.
+          </p>
+          <div class="p-price">4 000 ₽</div>
+          <div class="p-price-note">за урок при абонементе на 8 уроков</div>
+          <span class="p-more">Подробнее о формате &#8594;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cabinet" id="cabinet">
+    <div class="wrap">
+      <div class="cabinet-grid">
+        <div>
+          <span class="lbl lbl-dark">Для каждого студента</span>
+          <h2 class="sh sh-dark">Личный кабинет</h2>
+          <p class="cabinet-desc">
+            Каждому студенту открыт доступ в личный кабинет: вся информация по урокам, дополнительные материалы и видеоуроки по всем темам грамматики — в одном месте, в любое время.
+          </p>
+          <ul class="cab-list">
+            <li>Все уроки и материалы по пройденным темам</li>
+            <li>Дополнительные материалы: статьи, учебники, упражнения</li>
+            <li>Видеоуроки по всем темам грамматики — в любое время</li>
+          </ul>
+        </div>
+        <div class="cabinet-photo">
+          <img src="платформа.png" alt="Личный кабинет студента ARNT Academy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="reviews-bg" aria-hidden="true"></div>
+    <div class="reviews-inner">
+      <h2 class="reviews-title">Что говорят мои ученики</h2>
+      <div class="slider">
+        <button class="slider-arrow prev" aria-label="Предыдущий">&#8592;</button>
+        <button class="slider-arrow next" aria-label="Следующий">&#8594;</button>
+
+        <div class="slide active">
+          <div class="slide-avatar"><img src="отзыв2.JPG" alt="Елена" /></div>
+          <p class="slide-text">Ариночка, ты тот человек, который сделал невозможное возможным!!! Ты помогла мне поверить в себя и добиться лучших результатов. У меня не просто пятёрка за ОГЭ — у меня 65 баллов из 68! Спасибо тебе ОГРОМНОЕ за то, что ты делаешь! 🩷🩷🩷</p>
+          <div><p class="slide-name">Елена</p><p class="slide-place">ОГЭ</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar slide-avatar-init"><span>📖</span></div>
+          <p class="slide-text">Арина Сергеевна, вам благодарна не только я, но и вся моя семья. Я даже поверить не могла, что у меня будет сто баллов за ЕГЭ!! За этот год я поверила в себя и свои силы!! Только благодаря вам!</p>
+          <div><p class="slide-name">Вероника</p><p class="slide-place">100 баллов на ЕГЭ</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar"><img src="отзыв1.JPG" alt="Елена" /></div>
+          <p class="slide-text">Благодаря вам я поступила в университет — в Малайзии! Если бы не занятия, поддержка и настойчивость, у меня бы не получилось. Вы вложили в меня столько сил и веры, и я это очень ценю. Ещё раз — огромное спасибо 💛</p>
+          <div><p class="slide-name">Елена</p><p class="slide-place">поступила в Малайзию</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar slide-avatar-init"><span>📗</span></div>
+          <p class="slide-text">Арина, мы вам очень благодарны за вашу работу. У вас дар преподавания и объяснения материала. Но что не менее важно — вы стали примером дисциплины и наставником для моей дочери. Она во всю стремится за вами! Спасибо!</p>
+          <div><p class="slide-name">Лилиана</p><p class="slide-place">мама студентки, ЕГЭ 96 баллов</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar"><img src="алиса.JPG" alt="Алиса" style="transform: scale(3.4); transform-origin: 52% 22%;" /></div>
+          <p class="slide-text">Спасибо ОГРОМНОЕ за подготовку! За этот год у меня очень сильно поднялся уровень английского, а самое главное — я полюбила этот язык! За ОГЭ 61 балл, чему я безумно рада. За устную часть — максимум, это очень большое достижение, она была самой сложной для меня!</p>
+          <div><p class="slide-name">Алиса</p><p class="slide-place">61 балл на ОГЭ</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar"><img src="отзыв 3.JPG" alt="Влад" /></div>
+          <p class="slide-text">Арина, ты просто идеальный проводник в мир английского языка! Такое погружение и мультижанровое проведение с нотками истории интересных фактов! Я очень кайфанул от возвращения в мир английского языка именно с тобой!</p>
+          <div><p class="slide-name">Влад</p><p class="slide-place">Москва, преподаватель физики</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar slide-avatar-init"><span>📘</span></div>
+          <p class="slide-text">Я долго искала своего репетитора. Мне было непросто из-за разницы часового пояса особенно. И тут мне улыбнулась удача — я нашла её! Арина — это профессионал своего дела. Если вам нужен репетитор по английскому языку, то непременно это Арина!</p>
+          <div><p class="slide-name">Марина</p><p class="slide-place">Переезд в Америку</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar"><img src="андрей.JPG" alt="Андрей" /></div>
+          <p class="slide-text">Лучший индивидуальный подход! Нравится стиль преподавания Арины и то, как проходят уроки — мы много разговариваем и изучаем культуру разных стран, смотрим отрывки из фильмов, что делает обучение более увлекательным. Чувствуется индивидуальный подход — Арина всегда подстраивает занятия под мои желания!</p>
+          <div><p class="slide-name">Андрей</p><p class="slide-place">Москва, Первый канал</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar"><img src="денис.JPG" alt="Денис" /></div>
+          <p class="slide-text">Время занятий стали для меня уже приятной частью недели. Работаем с темами, которые действительно мне интересны. И ещё всегда комфортно подстраиваемся друг под друга по времени и формату. Спасибо за поддержку, спокойную атмосферу и приятный совместный путь в изучении английского!</p>
+          <div><p class="slide-name">Денис</p><p class="slide-place">Москва, МР Групп</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar"><img src="алексей фото.JPG" alt="Алексей" /></div>
+          <p class="slide-text">Ой, Арина, ты зэ бест тичер! Я не думал, что с моим уровнем можно обсуждать бизнес на английском. Раньше максимум — базовые фразы, и то с паузами. Мне нравится, что нет перегруза и после каждого созвона у меня есть новые слова и фразы!</p>
+          <div><p class="slide-name">Алексей</p><p class="slide-place">Предприниматель</p></div>
+        </div>
+        <div class="slide">
+          <div class="slide-avatar"><img src="николай.JPG" alt="Николай" /></div>
+          <p class="slide-text">Только вышел после встречи с нашим иностранным подрядчиком, где обсуждали дальнейшее взаимодействие. Хотел ещё раз сказать тебе спасибо за твои уроки! Я смог понятно на английском языке объяснить наши требования к проекту. Всем коллегам теперь рекомендую только уроки с тобой!</p>
+          <div><p class="slide-name">Николай</p><p class="slide-place">Москва, Меркури Интернейшнл Бизнес-консалтинг</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="wrap">
+      <div class="benefits-hd">
+        <span class="lbl lbl-dark">Почему ARNT Academy</span>
+        <h2 class="sh sh-dark">Преимущества</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="b-item">
+          <span class="b-num">01</span>
+          <h3 class="b-title">Международный уровень квалификации</h3>
+          <p class="b-text">Дипломированный педагог, которая постоянно повышает квалификацию и сама сдаёт международные экзамены. Училась в Vlerick Business School и НИУ ВШЭ, объездила 23 страны и говорю на 4 языках — на уроках вы получаете не только язык, но и живой опыт разных культур.</p>
+        </div>
+        <div class="b-item">
+          <span class="b-num">02</span>
+          <h3 class="b-title">Формат под ваш бюджет</h3>
+          <p class="b-text">Работаю индивидуально и в небольших группах. В группе можно заниматься в парах и получить тот же опыт преподавания по более низкой цене.</p>
+        </div>
+        <div class="b-item">
+          <span class="b-num">03</span>
+          <h3 class="b-title">Авторская методика</h3>
+          <p class="b-text">Разработала собственный метод преподавания совместно с заведующей кафедрой педагогического университета — студенты начинают реально говорить на языке, без зубрёжки правил и грамматики.</p>
+        </div>
+        <div class="b-item">
+          <span class="b-num">04</span>
+          <h3 class="b-title">Живая практика, а не учебник</h3>
+          <p class="b-text">На уроках разбираем фильмы, культуру и реальные ситуации из работы и путешествий — язык учится в контексте, живой речью, а не по шаблонным упражнениям.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="cta-deco" aria-hidden="true">A</div>
+    <div class="wrap">
+      <div class="cta-inner">
+        <span class="lbl lbl-light">Начать</span>
+        <h2 class="cta-h">Начните<br>с <em>первого урока</em></h2>
+        <p class="cta-p">Запишитесь в Telegram — ответим в течение дня и подберём формат под ваши задачи и расписание.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a class="btn-solid" href="https://t.me/arnt_academy_clients_bot" target="_blank" rel="noopener">Записаться</a>
+          <a class="btn-ghost" href="https://arntacademy.github.io/arntacademy/#test" target="_blank" rel="noopener">Пройти тест на уровень</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="faq-hd">
+        <span class="lbl lbl-dark">Вопросы и ответы</span>
+        <h2 class="sh sh-dark">Это может быть интересно</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span class="faq-q">К каким экзаменам вы готовите?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">ОГЭ, ЕГЭ, а также международные экзамены — TOEFL, DET (Duolingo English Test) и Cambridge (CAE, FCE). На консультации помогу определить, какой экзамен подходит под вашу цель.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span class="faq-q">Что входит в пробный урок?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Пробный урок — это всегда консультация, без оплаты, длится около 45–50 минут. На нём я провожу диагностику уровня, выстраиваю индивидуальную траекторию подготовки, мы обсуждаем цели, сроки, формат и детали обучения. Это и знакомство, и точка, с которой начинается осмысленная подготовка.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span class="faq-q">Даёте ли вы домашние задания?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Да, и это важная часть подготовки. Между занятиями вы закрепляете материал, отрабатываете то, что разобрали на уроке, и приходите на следующее занятие уже с результатом. Без самостоятельной работы прогресс заметно медленнее.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a class="f-logo" href="index.html">ARNT Academy</a>
+    <span class="f-copy">© 2025 ARNT Academy</span>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 72);
+    }, { passive: true });
+
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    function showSlide(n) {
+      slides[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+    }
+    document.querySelector('.slider-arrow.prev').addEventListener('click', () => showSlide(current - 1));
+    document.querySelector('.slider-arrow.next').addEventListener('click', () => showSlide(current + 1));
+
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
