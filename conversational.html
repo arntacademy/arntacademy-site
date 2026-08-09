@@ -134,18 +134,18 @@
 
     /* about */
     .about { background: var(--cream); padding: 120px 0; }
-    .about-grid { display: flex; flex-direction: column; align-items: center; gap: 56px; text-align: center; }
-    .about-photo { width: 260px; aspect-ratio: 3/4; overflow: hidden; border-radius: 2px; }
+    .about-grid { display: flex; align-items: flex-start; gap: 64px; }
+    .about-left { width: 280px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .about-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: 2px; }
     .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
-    .about-left { max-width: 680px; }
-    .about-quote {
-      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-      font-size: clamp(26px, 2.8vw, 38px); line-height: 1.5; color: var(--brown); margin-top: 24px;
+    .about-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22px; color: var(--brown); margin-top: 18px; }
+    .about-role {
+      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 12px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--brown); opacity: 0.55; margin-top: 6px;
     }
-    .about-right { width: 100%; display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; }
-    .stat-row { border-left: 1px solid var(--brown12); padding: 0 48px; }
-    .stat-row:first-child { border-left: none; padding-left: 0; }
-    .stat-row:last-child { padding-right: 0; }
+    .about-right { flex: 1; }
+    .stat-row { border-top: 1px solid var(--brown12); padding: 26px 0; }
+    .stat-row:last-child { border-bottom: 1px solid var(--brown12); }
     .stat-val { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 60px; line-height: 1; color: var(--brown); margin-bottom: 6px; letter-spacing: -0.02em; }
     .stat-val-sm { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 40px; line-height: 1; color: var(--brown); margin-bottom: 6px; }
     .stat-note { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.55; color: var(--brown); opacity: 0.55; }
@@ -196,7 +196,7 @@
     .reviews { position: relative; padding: 120px 0; overflow: hidden; }
     .reviews-bg { position: absolute; inset: 0; background-image: url('библио.png'); background-size: cover; background-position: center; background-repeat: no-repeat; }
     .reviews-bg::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.78); }
-    .reviews-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 80px; text-align: center; }
+    .reviews-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 0 88px; text-align: center; }
     .reviews-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 64px; letter-spacing: 0.04em; }
     .slider { position: relative; }
     .slide { display: none; flex-direction: column; align-items: center; gap: 36px; }
@@ -245,9 +245,8 @@
       .hero-lockup { flex-direction: column; justify-content: center; gap: 14px; }
       .hero-lockup-text { text-align: center; }
       .about { padding: 88px 0; }
-      .about-photo { width: 200px; }
-      .about-right { gap: 32px; }
-      .stat-row { padding: 0 24px; }
+      .about-grid { gap: 40px; }
+      .about-left { width: 200px; }
       .fbody { padding: 72px 0; }
       .fbody-grid { grid-template-columns: 1fr; gap: 40px; }
       .cabinet { padding: 88px 0; }
@@ -277,16 +276,16 @@
       .benefits { padding: 72px 0; }
       .cta { padding: 80px 0; }
       .stat-val { font-size: 48px; }
-      .about-right { flex-direction: column; gap: 24px; }
-      .stat-row { border-left: none; padding: 0; }
+      .about-grid { flex-direction: column; align-items: center; }
+      .about-left { width: 100%; max-width: 240px; }
       .reviews { padding: 64px 0; }
-      .reviews-inner { padding: 0 8px; }
+      .reviews-inner { padding: 0 44px; }
       .reviews-title { margin-bottom: 36px; }
       .slide { gap: 22px; }
       .slide-avatar { width: 110px; height: 110px; }
       .slider-arrow { width: 34px; height: 34px; font-size: 14px; background: rgba(0,0,0,0.35); }
-      .slider-arrow.prev { left: -2px; }
-      .slider-arrow.next { right: -2px; }
+      .slider-arrow.prev { left: 4px; }
+      .slider-arrow.next { right: 4px; }
       .b-item { padding: 32px 0; }
       footer { padding: 24px 20px; }
     }
@@ -325,14 +324,12 @@
   <section class="about" id="about">
     <div class="wrap">
       <div class="about-grid">
-        <div class="about-photo">
-          <img src="препод.png" alt="Арина Ткачёва" />
-        </div>
         <div class="about-left">
-          <span class="lbl lbl-dark">Кто я и почему готовиться со мной</span>
-          <p class="about-quote">
-            Меня зовут Арина. Училась английскому за рубежом, готовлю по собственной методике пересказов (совмещает академическую точность и живую практику). Мои студенты поступают в вузы и сдают экзамены на высокие баллы.
-          </p>
+          <div class="about-photo">
+            <img src="препод.png" alt="Арина Ткачёва" />
+          </div>
+          <div class="about-name">Ткачёва Арина</div>
+          <div class="about-role">Преподаватель и идейный вдохновитель</div>
         </div>
         <div class="about-right">
           <div class="stat-row">
@@ -346,6 +343,10 @@
           <div class="stat-row">
             <div class="stat-val-sm">B2–C1</div>
             <div class="stat-note">Уровни международных экзаменов, к которым я готовлю</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-val-sm">C2</div>
+            <div class="stat-note">Мой уровень английского</div>
           </div>
         </div>
       </div>
