@@ -98,9 +98,9 @@
       text-align: center; max-width: 1200px; padding: 0 24px;
     }
     .hero-label {
-      display: block; font-family: 'Jost', sans-serif; font-weight: 400;
-      font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
-      color: var(--cream); opacity: 0.75; margin-bottom: 22px;
+      display: block; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
+      font-size: clamp(20px, 3vw, 36px);
+      color: var(--white); opacity: 0.8; margin-bottom: 22px;
     }
     .hero-lockup {
       display: flex; align-items: center; justify-content: space-between;
@@ -170,12 +170,18 @@
     }
 
     @media (max-width: 600px) {
-      .nav { padding: 22px 24px; }
-      .nav.solid { padding: 16px 24px; }
+      .nav { padding: 16px 18px; }
+      .nav.solid { padding: 12px 18px; }
+      .nav-logo { font-size: 15px; gap: 6px; }
+      .nav-crest { height: 20px; }
+      .nav-btn { padding: 8px 12px; font-size: 8px; letter-spacing: 0.1em; }
       .hero-lockup { flex-direction: column; justify-content: center; gap: 14px; }
       .hero-lockup-text { text-align: center; }
       .hero-cta { flex-direction: column; width: 100%; }
-      .hero-cta .btn-solid, .hero-cta .btn-ghost { width: 100%; text-align: center; }
+      .hero-cta .btn-solid, .hero-cta .btn-ghost {
+        width: 100%; text-align: center; padding: 12px 28px; font-size: 10px;
+      }
+      .hub-label { font-size: 30px; margin-bottom: 28px; }
       .request { padding: 80px 0; }
       .hub-item a { padding: 24px 20px; gap: 16px; }
       .hub-key { width: 36px; }
@@ -203,7 +209,7 @@
       <div class="hero-lockup">
         <img class="hero-mark" src="AA.png" alt="ARNT Academy">
         <span class="hero-lockup-text">
-          <span class="lockup-title">Arnt Academy:</span>
+          <span class="lockup-title">Arnt Academy</span>
           <span class="lockup-sub">развивай мышление через язык</span>
         </span>
       </div>
@@ -226,7 +232,7 @@
                 <span class="hub-item-title">Хочу сдать ОГЭ, ЕГЭ, TOEFL, DET</span>
                 <span class="hub-arrow">&#8594;</span>
               </span>
-              <p class="hub-item-desc">Средний балл ЕГЭ — 90, средняя оценка за ОГЭ — 5.</p>
+              <p class="hub-item-desc">Средний балл моих студентов на ЕГЭ — 90 (12 стобалльников), средняя оценка на ОГЭ — 5</p>
             </span>
           </a>
         </li>
@@ -238,7 +244,7 @@
                 <span class="hub-item-title">Хочу свободно разговаривать на английском</span>
                 <span class="hub-arrow">&#8594;</span>
               </span>
-              <p class="hub-item-desc">Разработаем программу изучения под вашу цель.</p>
+              <p class="hub-item-desc">Английский для бизнеса, путешествий и отношений</p>
             </span>
           </a>
         </li>
@@ -250,7 +256,7 @@
                 <span class="hub-item-title">Асинхронное обучение</span>
                 <span class="hub-arrow">&#8594;</span>
               </span>
-              <p class="hub-item-desc">Каждую неделю — пошаговый план изучения языка и подробная обратная связь.</p>
+              <p class="hub-item-desc">Каждую неделю — пошаговый план изучения языка и подробная обратная связь</p>
             </span>
           </a>
         </li>
@@ -262,7 +268,7 @@
                 <span class="hub-item-title">Консультация для преподавателей</span>
                 <span class="hub-arrow">&#8594;</span>
               </span>
-              <p class="hub-item-desc">3 созвона: оптимизируем операционку, внедрим новые инструменты и усовершенствуем методику.</p>
+              <p class="hub-item-desc">3 созвона: оптимизируем операционку, внедрим новые инструменты и усовершенствуем методику</p>
             </span>
           </a>
         </li>
@@ -274,7 +280,7 @@
                 <span class="hub-item-title">Узнать свой уровень английского</span>
                 <span class="hub-arrow">&#8594;</span>
               </span>
-              <p class="hub-item-desc">А ещё получите ссылку на закрытый клуб для изучения английского.</p>
+              <p class="hub-item-desc">А ещё получить ссылку на закрытый клуб для изучения английского</p>
             </span>
           </a>
         </li>
