@@ -139,6 +139,8 @@
     .fperk { margin-top: 44px; padding: 28px 32px; background: rgba(37,24,2,0.05); border-left: 3px solid var(--green); }
     .fperk-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 20px; color: var(--brown); margin-bottom: 8px; }
     .fperk-text { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.7; color: var(--brown); opacity: 0.7; }
+    .fperk-photo { margin-top: 18px; border-radius: 2px; overflow: hidden; aspect-ratio: 8/5; box-shadow: 0 14px 32px rgba(37,24,2,0.14); }
+    .fperk-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
     .fprice-block { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--brown12); }
     .fprice { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 36px; line-height: 1; color: var(--brown); margin-bottom: 5px; }
     .fprice-note { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 12px; color: var(--brown); opacity: 0.5; }
@@ -223,15 +225,14 @@
     .slide-text { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.65; color: var(--white); font-style: normal; }
     .slide-name { font-family: 'Jost', sans-serif; font-weight: 500; font-size: 16px; color: var(--white); letter-spacing: 0.08em; }
     .slide-place { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.06em; }
+    .slide-controls { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 40px; }
     .slider-arrow {
       pointer-events: all; cursor: pointer; width: 48px; height: 48px; border-radius: 50%;
       border: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.1);
       color: var(--white); font-size: 20px; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s; position: absolute; top: 50%; transform: translateY(-50%);
+      transition: background 0.2s;
     }
     .slider-arrow:hover { background: rgba(255,255,255,0.2); }
-    .slider-arrow.prev { left: -64px; }
-    .slider-arrow.next { right: -64px; }
 
     /* faq */
     .faq { background: var(--cream); padding: 120px 0; }
@@ -273,8 +274,6 @@
       .reviews-title { margin-bottom: 48px; }
       .slide-avatar { width: 140px; height: 140px; }
       .slider-arrow { width: 40px; height: 40px; font-size: 16px; }
-      .slider-arrow.prev { left: 0; }
-      .slider-arrow.next { right: 0; }
       .benefits { padding: 88px 0; }
       .benefits-grid { grid-template-columns: 1fr; }
       .b-item { padding: 36px 32px; }
@@ -300,9 +299,8 @@
       .reviews-title { margin-bottom: 36px; }
       .slide { gap: 22px; }
       .slide-avatar { width: 110px; height: 110px; }
+      .slide-controls { margin-top: 28px; gap: 18px; }
       .slider-arrow { width: 34px; height: 34px; font-size: 14px; background: rgba(0,0,0,0.35); }
-      .slider-arrow.prev { left: 4px; }
-      .slider-arrow.next { right: 4px; }
       .b-item { padding: 32px 0; }
       footer { padding: 24px 20px; }
     }
@@ -353,7 +351,7 @@
         <div class="about-right">
           <div class="stat-row">
             <div class="stat-val">90</div>
-            <div class="stat-note">Средний балл ЕГЭ<br>12 стобалльников</div>
+            <div class="stat-note">Средний балл моих студентов на ЕГЭ<br>12 стобалльников</div>
           </div>
           <div class="stat-row">
             <div class="stat-val">5</div>
@@ -398,7 +396,8 @@
 
         <div class="fperk">
           <div class="fperk-title">Личный кабинет</div>
-          <p class="fperk-text">Все материалы курса — в открытом доступе по одной ссылке: видеозаписи уроков по темам, которые мы прошли, и весь список домашних заданий. Открываете — и всё уже под рукой, ничего искать в переписке не нужно.</p>
+          <p class="fperk-text">Все материалы курса — в открытом доступе по одной ссылке: видеозаписи уроков по темам, которые мы прошли, весь список домашних заданий и ваш прогресс — видно, что уже пройдено, а что впереди.</p>
+          <div class="fperk-photo"><img src="платформа.png" alt="Личный кабинет студента ARNT Academy"></div>
         </div>
 
         <div class="fprice-block">
@@ -436,9 +435,6 @@
     <div class="reviews-inner">
       <h2 class="reviews-title">Что говорят мои ученики</h2>
       <div class="slider">
-        <button class="slider-arrow prev" aria-label="Предыдущий">&#8592;</button>
-        <button class="slider-arrow next" aria-label="Следующий">&#8594;</button>
-
         <div class="slide active">
           <div class="slide-avatar"><img src="отзыв2.JPG" alt="Елена" /></div>
           <p class="slide-text">Ариночка, ты тот человек, который сделал невозможное возможным!!! Ты помогла мне поверить в себя и добиться лучших результатов. У меня не просто пятёрка за ОГЭ — у меня 65 баллов из 68! Спасибо тебе ОГРОМНОЕ за то, что ты делаешь! 🩷🩷🩷</p>
@@ -495,6 +491,10 @@
           <div><p class="slide-name">Николай</p><p class="slide-place">Москва, Меркури Интернейшнл Бизнес-консалтинг</p></div>
         </div>
 
+        <div class="slide-controls">
+          <button class="slider-arrow prev" aria-label="Предыдущий">&#8592;</button>
+          <button class="slider-arrow next" aria-label="Следующий">&#8594;</button>
+        </div>
       </div>
     </div>
   </section>
@@ -579,7 +579,7 @@
 
   <footer>
     <a class="f-logo" href="index.html">ARNT Academy</a>
-    <span class="f-copy">© 2025 ARNT Academy</span>
+    <span class="f-copy">© 2026 ARNT Academy</span>
   </footer>
 
   <script>
