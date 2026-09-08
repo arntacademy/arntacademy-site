@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>В группе — Форматы обучения — ARNT Academy</title>
-  <meta name="description" content="Занятия в малой группе до 4 человек: что входит в формат и что ждёт ученика на подготовке к ОГЭ, ЕГЭ и TOEFL.">
+  <title>Группа B2 — Форматы обучения — ARNT Academy</title>
+  <meta name="description" content="Веду набор в группу уровня B2 (Upper-Intermediate): до 5 человек, 1000 ₽ за урок. Программа для тех, кто хочет говорить свободно и уверенно.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -27,10 +27,13 @@
 
     /* nav */
     .nav {
-      background: var(--green);
-      padding: 18px 64px;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 30px 64px;
       display: flex; align-items: center; justify-content: space-between;
+      background: transparent;
+      transition: background 0.45s ease, padding 0.3s ease;
     }
+    .nav.solid { background: var(--green); padding: 18px 64px; }
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic; font-weight: 400; font-size: 24px;
@@ -80,7 +83,22 @@
     .back-link:hover { opacity: 1; }
 
     /* hero */
-    .fhero { background: var(--green); padding: 64px 0 80px; }
+    .fhero {
+      position: relative; height: 100vh; min-height: 620px;
+      display: flex; align-items: flex-end;
+      overflow: hidden; padding-bottom: 80px;
+    }
+    .fhero-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .fhero-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.68) 100%);
+    }
+    .fhero .wrap { position: relative; z-index: 2; }
     .fhero-sub {
       font-family: 'Jost', sans-serif; font-weight: 300;
       font-size: 15px; color: var(--cream); opacity: 0.6;
@@ -162,7 +180,7 @@
 </head>
 <body>
 
-  <nav class="nav">
+  <nav class="nav" id="nav">
     <a class="nav-logo" href="index.html">
       <img class="nav-crest" src="Frame 24.png" alt="">
       ARNT Academy
@@ -171,11 +189,13 @@
   </nav>
 
   <section class="fhero">
+    <img class="fhero-photo" src="библио.png" alt="" aria-hidden="true">
+    <div class="fhero-veil" aria-hidden="true"></div>
     <div class="wrap">
       <a class="back-link" href="exam-prep.html">&#8592; Назад к форматам</a>
-      <span class="lbl lbl-light">Формат обучения · 01</span>
-      <h1 class="sh sh-light">В группе</h1>
-      <p class="fhero-sub">5 человек в группе</p>
+      <span class="lbl lbl-light">Набор в группу · Уровень B2</span>
+      <h1 class="sh sh-light">Группа B2</h1>
+      <p class="fhero-sub">Upper-Intermediate · до 5 человек в группе</p>
     </div>
   </section>
 
@@ -183,25 +203,35 @@
     <div class="wrap fbody-grid">
       <div>
         <p class="fintro">
-          Малая группа — это академическая среда, где сохраняется тёплая, живая атмосфера, но при этом каждый ученик остаётся в фокусе внимания. Подходит тем, кому важна дисциплина расписания и энергия совместной работы.
+          B2 — уровень, на котором заканчиваются оправдания «мне не хватает слов». Вы уже понимаете грамматику и держите бытовой разговор, но в сложных темах теряетесь и переводите с русского в голове. Эта группа — про то, чтобы начать говорить свободно и по-настоящему думать на английском.
         </p>
+
+        <span class="lbl lbl-dark fsec-title">Кому подходит</span>
+        <ul class="flist">
+          <li>Понимаете грамматику и поддерживаете бытовой разговор, но теряетесь, когда тема усложняется</li>
+          <li>Хотите избавиться от пауз и калек с русского, говорить увереннее и быстрее</li>
+          <li>Готовитесь к международному экзамену (IELTS, FCE) или собеседованию на английском</li>
+        </ul>
       </div>
       <div>
+        <span class="lbl lbl-dark fsec-title">Программа уровня</span>
+        <ul class="flist">
+          <li>Сложные времена и их смешение в живой речи</li>
+          <li>Conditionals второго и третьего типа, смешанные условные</li>
+          <li>Страдательный залог и косвенная речь</li>
+          <li>Модальные глаголы для предположений и вероятности</li>
+          <li>Фразовые глаголы и идиомы в разговорной речи</li>
+          <li>Обсуждение абстрактных тем — общество, работа, технологии</li>
+          <li>Чтение длинных текстов, эссе и деловая переписка</li>
+        </ul>
+
         <span class="lbl lbl-dark fsec-title">Что входит</span>
         <ul class="flist">
-          <li>Группы до 5 человек одного уровня и цели — ОГЭ, ЕГЭ или международный экзамен</li>
-          <li>Абонемент на 8 занятий со структурированной программой</li>
-          <li>Регулярные письменные и устные тренировки по формату экзамена</li>
+          <li>Группа до 5 человек одного уровня и цели</li>
+          <li>Регулярные занятия по структурированной программе</li>
           <li>Разбор типичных ошибок и совместная работа над сложными темами</li>
           <li>Обратная связь после каждого занятия</li>
           <li>Доступ в закрытый Telegram-канал с материалами Арины: учебники, статьи, журналы под любой уровень</li>
-        </ul>
-
-        <span class="lbl lbl-dark fsec-title">Что ждёт ученика</span>
-        <ul class="flist">
-          <li>Живые дискуссии и практика речи в кругу единомышленников</li>
-          <li>Чёткий, понятный план продвижения по темам экзамена</li>
-          <li>Поддерживающая и одновременно соревновательная атмосфера, которая помогает не сбавлять темп</li>
         </ul>
 
         <div class="fperk">
@@ -211,13 +241,8 @@
         </div>
 
         <div class="fprice-block">
-          <div class="fprice">12 000 ₽</div>
-          <div class="fprice-note">за 8 уроков</div>
-        </div>
-
-        <div class="fperk">
-          <div class="fperk-title">Сейчас идёт набор</div>
-          <p class="fperk-text">Открыт набор в группу уровня B2 (Upper-Intermediate) — для тех, кто хочет говорить свободно и уверенно. <a href="b2-group.html" style="color: var(--brown); text-decoration: underline;">Подробнее о группе B2 &#8594;</a></p>
+          <div class="fprice">1 000 ₽</div>
+          <div class="fprice-note">за один урок · группа до 5 человек</div>
         </div>
       </div>
     </div>
@@ -226,7 +251,7 @@
   <section class="fcta" id="contact">
     <div class="wrap">
       <h2 class="fcta-h">Готовы начать?</h2>
-      <p class="fcta-p">Запишитесь на пробный урок — обсудим уровень и расписание группы.</p>
+      <p class="fcta-p">Запишитесь на пробный урок — обсудим уровень и расписание группы B2.</p>
       <a class="btn-solid" href="https://t.me/arnt_academy_clients_bot">Записаться</a>
     </div>
   </section>
@@ -235,6 +260,13 @@
     <a class="f-logo" href="index.html">ARNT Academy</a>
     <span class="f-copy">© 2026 ARNT Academy</span>
   </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 72);
+    }, { passive: true });
+  </script>
 
 </body>
 </html>
