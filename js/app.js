@@ -284,6 +284,25 @@
       </div>
     </section>
 
+    <section class="reviews" id="reviews">
+      <div class="reviews__bg" style="background-image:url(${img('library')})"></div>
+      <div class="wrap">
+        <div class="reviews__head">
+          <div><p class="eyebrow line">Отзывы</p><h2 class="h2">Что говорят мои ученики</h2></div>
+          <div class="reviews__nav"><button class="reviews__btn" data-rev="-1" aria-label="Предыдущие отзывы">←</button><button class="reviews__btn" data-rev="1" aria-label="Следующие отзывы">→</button></div>
+        </div>
+        <div class="reviews__track" id="reviewsTrack">
+          ${D.reviews.map((r) => `<figure class="review">
+            <blockquote>${esc(r.text)}</blockquote>
+            <figcaption>
+              ${r.photo ? `<img src="assets/img/reviews/${r.photo}" alt="" loading="lazy">` : `<span class="review__initial">${esc(r.name[0])}</span>`}
+              <span><b>${esc(r.name)}</b><small>${esc(r.place)}</small></span>
+            </figcaption>
+          </figure>`).join('')}
+        </div>
+      </div>
+    </section>
+
     <section class="section photo-section photo-section--formats" id="formats">
       <div class="photo-section__bg" style="background-image:url(${img('bgFormats')})"></div>
       <div class="wrap">
@@ -773,6 +792,8 @@
     const go = t.closest('#consentGo');
     if (go && !consentGiven) { e.preventDefault(); toast('Отметьте согласие на обработку данных'); return; }
     if (go) { setTimeout(() => { $('#consentModal').hidden = true; }, 100); }
+    const rv = t.closest('[data-rev]');
+    if (rv) { const tr = $('#reviewsTrack'); const card = tr.querySelector('.review'); tr.scrollBy({ left: (+rv.dataset.rev) * (card.offsetWidth + 20), behavior: 'smooth' }); return; }
     const ck = t.closest('[data-cookie]');
     if (ck) { setCookieChoice(ck.dataset.cookie); return; }
     if (t.closest('[data-cookie-settings]')) { e.preventDefault(); $('#cookieBar').hidden = false; return; }
