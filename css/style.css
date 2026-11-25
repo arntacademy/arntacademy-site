@@ -195,6 +195,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .dir:hover .dir__bg { opacity: 1; }
 .dir:hover > span:not(.dir__bg) { transform: translateX(14px); }
 .plans.plans--2 { grid-template-columns: repeat(2, 1fr); }
+.plans.plans--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.photo-section--formats .plans.plans--3 { max-width: none; }
+.plan .price + .muted { display: block; }
 .plans--2 .plan { padding: clamp(36px, 5vw, 64px); }
 
 /* ---------- Секции с фото на фоне ---------- */
@@ -532,6 +535,7 @@ body:not(.consent-ok) .btn[data-needs-consent] { opacity: .55; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .grid-4, .stats { grid-template-columns: 1fr 1fr; }
   .skills { grid-template-columns: 1fr 1fr; }
+  .plans.plans--3 { grid-template-columns: 1fr 1fr; }
   .skills > div:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
   .skills > div:nth-child(even) { padding-left: 30px; border-left: 1px solid var(--cream-20); }
   .article-row { grid-template-columns: 110px 1fr; }
@@ -570,7 +574,7 @@ body:not(.consent-ok) .btn[data-needs-consent] { opacity: .55; }
   .dir { grid-template-columns: 40px 1fr 24px; padding: 24px 0; }
   .dir__d { grid-column: 2; grid-row: 2; }
   .dir__a { grid-column: 3; grid-row: 1; }
-  .plans--2, .plans.plans--2, .product, .grammar-month { grid-template-columns: 1fr; }
+  .plans--2, .plans.plans--2, .plans.plans--3, .product, .grammar-month { grid-template-columns: 1fr; }
   .concept-mini { grid-template-columns: 1fr 1fr; }
   .concept-mini > div:nth-child(3) { border-left: 0; }
   .concept-mini > div:nth-child(n+3) { border-top: 1px solid rgba(253,253,253,.2); }
