@@ -198,6 +198,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .plans.plans--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .photo-section--formats .plans.plans--3 { max-width: none; }
 .plan .price + .muted { display: block; }
+.plan__badge { display: inline-block; padding: 3px 10px; border: 1px solid var(--cream-50); border-radius: 99px; color: var(--cream); letter-spacing: .14em; }
 .plans--2 .plan { padding: clamp(36px, 5vw, 64px); }
 
 /* ---------- Секции с фото на фоне ---------- */
