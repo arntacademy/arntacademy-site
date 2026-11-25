@@ -1,0 +1,33 @@
+# Заголовки безопасности (для хостинга на Apache)
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://mc.yandex.ru https://yastatic.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://mc.yandex.ru; font-src 'self'; connect-src 'self' https://mc.yandex.ru; frame-src blob: https://mc.yandex.ru https://mc.yandex.com; child-src blob: https://mc.yandex.ru https://mc.yandex.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+</IfModule>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Только HTTPS и без www: https://arntacademy.ru
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://arntacademy.ru%{REQUEST_URI} [L,R=301]
+
+  # Страницы прошлой версии сайта → новые разделы (чтобы ссылки из поиска не вели на 404)
+  RewriteRule ^privacy(\.html|/)?$ /#/privacy [NE,L,R=301]
+  RewriteRule ^legal(\.html|/)?$ /#/legal [NE,L,R=301]
+  RewriteRule ^about(\.html|/)?$ /#/founder [NE,L,R=301]
+  RewriteRule ^courses(\.html|/.*)?$ /#/membership [NE,L,R=301]
+  RewriteRule ^(ielts|toefl|ege|study-abroad|diagnostic|contacts)(\.html|/)?$ / [L,R=301]
+  RewriteRule ^(llms\.txt|llms-full\.txt|catalog\.json)$ / [L,R=301]
+</IfModule>
+
+# Служебные файлы не отдаём посетителям
+RedirectMatch 404 /\.git
+<FilesMatch "^(README\.md|_headers|\.gitignore)$">
+  Require all denied
+</FilesMatch>
+
+ErrorDocument 404 /index.html
+Options -Indexes
